@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Model Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h2>Financial Model Results</h2>
+
+    <h3>Income Statement</h3>
+    {{ income_table | safe }}
+
+    <h3>Cash Flow Statement</h3>
+    {{ cashflow_table | safe }}
+
+    <h3>DCF Summary</h3>
+    {{ dcf_table | safe }}
+
+    <h3>Enterprise Value</h3>
+    <p style="font-size: 1.2em; font-weight: bold; color: #007bff;">{{ firm_value }}</p>
+
+    <form method="post">
+        {% for field in request.form %}
+        <input type="hidden" name="{{ field }}" value="{{ request.form[field] }}">
+        {% endfor %}
+        <button type="submit" name="download" value="true">Download Excel File</button>
+    </form>
+
+    <br>
+    <a href="{{ url_for('index') }}"><button>Back to Input</button></a>
+</body>
+</html>

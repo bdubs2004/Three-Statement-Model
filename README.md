@@ -9,4 +9,5 @@ How to Run:
 -Put all the .html files into a templates folder
 -Put all the .css files into a static folder
 -Download the requirements document
+-Create a credentials.json key for the AI
 -Deploy the app

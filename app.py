@@ -1,10 +1,14 @@
+import os
 import pandas as pd
 import numpy as np
 from flask import Flask, render_template, request, send_file
 import io
-import os
 
-app = Flask(__name__)
+# Explicitly define absolute paths to ensure compatibility on Render
+template_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates')
+static_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)), 'static')
+
+app = Flask(__name__, template_folder=template_dir, static_folder=static_dir)
 
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -90,8 +94,12 @@ def index():
                     download_name='financial_model.xlsx'
                 )
 
-            return render_template("response.html", income_table=income_table, cashflow_table=cashflow_table,
-                                   dcf_table=dcf_table, firm_value=firm_value_fmt, request=request)
+            return render_template("response.html",
+                                   income_table=income_table,
+                                   cashflow_table=cashflow_table,
+                                   dcf_table=dcf_table,
+                                   firm_value=firm_value_fmt,
+                                   request=request)
 
         except Exception as e:
             return f"Error processing form: {e}"

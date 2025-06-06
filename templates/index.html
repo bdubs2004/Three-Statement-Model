@@ -1,9 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Three-Statement Model</title>
+    <meta charset="UTF-8">
+    <title>Three Statement Model</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
-    <h1>Hello from Flask!</h1>
+    <h2>3-Statement Model & DCF Generator</h2>
+    <form method="post">
+        <label for="revenue">Starting Revenue ($):</label>
+        <input type="number" step="any" name="revenue" required>
+
+        <label for="growth_rate">Revenue Growth Rate (%):</label>
+        <input type="number" step="any" name="growth_rate" required>
+
+        <label for="gross_margin">Gross Margin (%):</label>
+        <input type="number" step="any" name="gross_margin" required>
+
+        <label for="opex_percent">Operating Expenses (% of Revenue):</label>
+        <input type="number" step="any" name="opex_percent" required>
+
+        <label for="capex">CapEx (Annual $):</label>
+        <input type="number" step="any" name="capex" required>
+
+        <label for="tax_rate">Tax Rate (%):</label>
+        <input type="number" step="any" name="tax_rate" required>
+
+        <label for="discount_rate">Discount Rate (%):</label>
+        <input type="number" step="any" name="discount_rate" required>
+
+        <label for="terminal_growth">Terminal Growth Rate (%):</label>
+        <input type="number" step="any" name="terminal_growth" required>
+
+        <button type="submit">Generate Model</button>
+    </form>
 </body>
 </html>
